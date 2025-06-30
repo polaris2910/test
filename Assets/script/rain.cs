@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class rain : MonoBehaviour
 {
-private float size;
-private int score;
-private SpriteRenderer renderer;
+float size;
+int score;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    float x = Random.Range(-2.4f, 2.4f);
+SpriteRenderer renderer;
+
+// Start is called before the first frame update
+void Start()
+{
+		renderer = GetComponent<SpriteRenderer>();
+
+    float x = Random.Range(-2.7f, 2.7f);
     float y = Random.Range(3.0f, 5.0f);
     transform.position = new Vector3(x, y, 0);
-
 
     int type = Random.Range(1, 4);
 
@@ -40,6 +42,7 @@ private SpriteRenderer renderer;
 		
     transform.localScale = new Vector3(size, size, 0);
 }
+
 
 
     
