@@ -19,7 +19,7 @@ void Start()
     float y = Random.Range(3.0f, 5.0f);
     transform.position = new Vector3(x, y, 0);
 
-    int type = Random.Range(1, 4);
+    int type = Random.Range(1, 5);
 
     if(type == 1)
 		{
@@ -39,8 +39,14 @@ void Start()
 		    score = 3;
 		    renderer.color = new Color(150 / 255f, 150 / 255f, 1f, 1f);
 		}
-		
-    transform.localScale = new Vector3(size, size, 0);
+        else if (type == 4)
+        {
+            size = 0.8f;
+            score = -5;
+            renderer.color = new Color(255.0f / 255f, 100 / 255f, 1f, 1f);
+        }
+
+        transform.localScale = new Vector3(size, size, 0);
 }
 
 
@@ -52,6 +58,12 @@ private void OnCollisionEnter2D(Collision2D collision)
     {
 		   Destroy(this.gameObject);
     }
+	    if (collision.gameObject.CompareTag("Player"))
+    {
+		   GameManager. Instance.AddScore(score);
+		   Destroy(this.gameObject);
+    }
+
 }
 
     // Update is called once per frame
